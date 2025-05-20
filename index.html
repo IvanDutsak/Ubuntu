@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зміни та нововведення в новій версії ОС Linux UBUNTU 24.04 LTS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #E95420 0%, #772953 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #E95420;
+        }
+        
+        .ubuntu-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .ubuntu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            background-color: rgba(233, 84, 32, 0.1);
+            border-radius: 50%;
+            padding: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-number {
+            font-size: 64px;
+            font-weight: 700;
+            opacity: 0.1;
+            position: absolute;
+            top: -30px;
+            right: 20px;
+        }
+        
+        .btn-ubuntu {
+            background-color: #E95420;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-ubuntu:hover {
+            background-color: #C74012;
+            transform: translateY(-2px);
+        }
+        
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #E95420;
+            z-index: 1000;
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+        
+        .parallax {
+            position: relative;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .accent-color {
+            color: #E95420;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #E95420;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid #E95420;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -13px;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        /* Animated waves */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://static1.howtogeekimages.com/wordpress/wp-content/uploads/2024/04/a-promotional-image-of-ubuntu-noble-numbat-in-the-center-of-the-screen-and-below-the-writing-ubuntu-24-04-noble-numbat.jpg');
+            background-size: 1000px 100px;
+        }
+        
+        .wave.wave1 {
+            opacity: 0.3;
+            animation: animate 30s linear infinite;
+            z-index: 1000;
+            animation-delay: 0s;
+            bottom: 0;
+        }
+        
+        .wave.wave2 {
+            opacity: 0.2;
+            animation: animate2 15s linear infinite;
+            z-index: 999;
+            animation-delay: -5s;
+            bottom: 10px;
+        }
+        
+        .wave.wave3 {
+            opacity: 0.1;
+            animation: animate 30s linear infinite;
+            z-index: 998;
+            animation-delay: -2s;
+            bottom: 15px;
+        }
+        
+        .wave.wave4 {
+            opacity: 0.05;
+            animation: animate2 5s linear infinite;
+            z-index: 997;
+            animation-delay: -5s;
+            bottom: 20px;
+        }
+        
+        @keyframes animate {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1000px; }
+        }
+        
+        @keyframes animate2 {
+            0% { background-position-x: 0; }
+            100% { background-position-x: -1000px; }
+        }
+        
+        /* Блимаючий курсор */
+        .blinking-cursor {
+            font-weight: 500;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { color: transparent; }
+            50% { color: #E95420; }
+        }
+        
+        /* Анімований заголовок */
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        /* Пульсуюча кнопка */
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(233, 84, 32, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(233, 84, 32, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(233, 84, 32, 0);
+            }
+        }
+        
+        .feature-card {
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section py-20 md:py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <img src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_720/https://assets.ubuntu.com/v1/c5414d0e-Numbat.png" alt="Ubuntu 24.04 Noble Numbat" class="w-32 h-32 mb-6" data-aos="zoom-in">
+                <h1 class="text-3xl md:text-5xl font-bold mb-3 typing-effect">Ubuntu 24.04 LTS</h1>
+                <h2 class="text-xl md:text-2xl mb-6">Noble Numbat</h2>
+                <p class="text-lg max-w-2xl mb-8">20 років інновацій. Новий фундамент для наступних 12 років підтримки.</p>
+                <a href="#features" class="btn-ubuntu px-8 py-3 rounded-full text-lg font-medium pulse-btn">Дізнатися більше</a>
+            </div>
+        </div>
+        
+        <!-- Animated waves -->
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+    
+    <!-- Introduction -->
+    <section class="py-16 bg-white" id="intro">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title" data-aos="fade-up">Огляд Ubuntu 24.04 LTS</h2>
+                    <p class="text-lg text-gray-600 mt-8" data-aos="fade-up" data-aos-delay="100">
+                        Ubuntu 24.04 LTS "Noble Numbat" — це нова версія з довгостроковою підтримкою (LTS), яка продовжує 20-річну традицію інновацій у світі відкритого програмного забезпечення. Ця версія об'єднує останні досягнення екосистеми Linux та пропонує стабільну платформу з 12-річною підтримкою.
+                    </p>
+                    <p class="text-lg text-gray-600 mt-4" data-aos="fade-up" data-aos-delay="150">
+                        Випуск включає в себе нове ядро Linux 6.8, оновлене робоче середовище GNOME 46, удосконалені інструменти безпеки та багато інших покращень, спрямованих на забезпечення кращого досвіду користування як для домашніх користувачів, так і для корпоративних клієнтів.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="ubuntu-card bg-white p-6" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-3 accent-color">Ключові факти</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Випущено: квітень 2024</li>
+                            <li>Період підтримки: до 12 років</li>
+                            <li>Кодова назва: Noble Numbat</li>
+                            <li>Базується на ядрі Linux 6.8</li>
+                            <li>Робоче середовище: GNOME 46</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ubuntu-card bg-white p-6" data-aos="fade-left">
+                        <h3 class="text-xl font-bold mb-3 accent-color">Системні вимоги</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>2 ГГц двоядерний процесор або краще</li>
+                            <li>4 ГБ оперативної пам'яті</li>
+                            <li>25 ГБ вільного місця на диску</li>
+                            <li>Підключення до Інтернету</li>
+                            <li>Роздільна здатність 1024 x 768</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Features -->
+    <section class="py-16 bg-gray-50" id="features">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">Основні нововведення</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md relative" data-aos="fade-up">
+                    <div class="feature-number">01</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Новий інсталятор</h3>
+                    <p class="text-gray-600">
+                        Повністю оновлений інсталятор з інтерфейсом на Flutter та підтримкою автоматизованої інсталяції. Додано підтримку шифрування ZFS та експериментальне апаратне шифрування повного диску на базі TPM.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-number">02</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Центр додатків</h3>
+                    <p class="text-gray-600">
+                        Новий "App Center" замінює Ubuntu Software. Він має сучасніший вигляд, кращу продуктивність, чіткіші категорії та функції рейтингу програм для спрощення пошуку якісного програмного забезпечення.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-number">03</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">GNOME 46</h3>
+                    <p class="text-gray-600">
+                        Оновлений робочий стіл GNOME 46 з покращеними повідомленнями, швидким пошуком файлів по всій системі, підтримкою OneDrive та віддаленим входом через RDP.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-number">04</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Покращена безпека</h3>
+                    <p class="text-gray-600">
+                        Обмеження непривілейованих користувацьких просторів імен, покращене зміцнення бінарних файлів, AppArmor 4, вимкнення старих версій TLS та нові функції безпеки ядра.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md relative" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-number">05</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Швидкі налаштування</h3>
+                    <p class="text-gray-600">
+                        Оновлене меню швидких налаштувань з кнопками-пігулками для зручного керування Wi-Fi, Bluetooth та іншими функціями. Покращений слайдер гучності та підтримка фонових додатків Flatpak.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md relative" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-number">06</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Ядро Linux 6.8</h3>
+                    <p class="text-gray-600">
+                        Нове ядро Linux 6.8 з підтримкою ширшого спектру апаратного забезпечення, оптимізаціями продуктивності, покращеною роботою з пам'яттю swap та кращою підтримкою геймпадів і контролерів.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center" data-aos="fade-up">
+                <a href="#details" class="btn-ubuntu px-8 py-3 rounded-full text-lg font-medium">Детальніше про функції</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Visual Comparison -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title mx-auto" style="width: fit-content;" data-aos="fade-up">
+                Візуальний огляд
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/ubuntu-numbat.jpg" alt="Ubuntu 24.04 Desktop" class="rounded-lg shadow-lg">
+                </div>
+                
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-4 accent-color">Оновлений робочий стіл</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Динамічний індикатор робочих просторів у верхній панелі</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Тонший шрифт Ubuntu для кращої читабельності</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Помічник мозаїчного розташування вікон з підтримкою чвертей екрану</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Розширені сповіщення з можливістю згортання/розгортання</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Більші аватари користувачів на екрані входу</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-16">
+                <div class="order-2 lg:order-1" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-4 accent-color">Новий файловий менеджер</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Глобальний пошук файлів по всій системі</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Миттєве перемикання між видами (сітка/список)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Вдосконалене відображення прогресу файлових операцій</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Підтримка мініатюр у діалозі вибору файлів</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Інтеграція з Microsoft OneDrive</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <img src="https://static1.ahelpme.com/public/media/tutorials/review-ubuntu-desktop-24.04-lts-gnome-files-with-windows-disk-screenshot-16--006abbee7d.png" alt="Nautilus File Manager" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Detailed Features -->
+    <section class="py-16 bg-gray-50" id="details">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title mx-auto" style="width: fit-content;" data-aos="fade-up">
+                Детальний огляд функцій
+            </h2>
+            
+            <!-- GNOME 46 -->
+            <div class="bg-white rounded-lg shadow-md p-8 mb-12" data-aos="fade-up">
+                <div class="flex items-start">
+                    <div class="mr-6 mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">GNOME 46 "Kathmandu"</h3>
+                        <p class="text-gray-600 mb-6">
+                            Ubuntu 24.04 містить останню версію середовища робочого столу GNOME 46, яка приносить численні покращення продуктивності, нові функції та вдосконалений користувацький досвід.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Пошук скрізь</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Нова функція глобального пошуку в менеджері файлів дозволяє шукати файли по всій системі. Просто натисніть кнопку пошуку або використайте комбінацію Ctrl+Shift+F і введіть запит.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Покращені повідомлення</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Повідомлення тепер мають заголовки для позначення додатку-відправника та можуть бути розгорнуті/згорнуті для доступу до дій повідомлення за потреби.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Віддалений вхід через RDP</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Нова опція віддаленого входу дозволяє підключатися до системи GNOME, яка ще не використовується, через протокол RDP. Налаштування доступні в параметрах віддаленого робочого столу.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Підтримка OneDrive</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Налаштуйте обліковий запис Microsoft 365 в системних налаштуваннях, і ваш OneDrive з'явиться в бічній панелі менеджера файлів для легкого доступу.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Installer -->
+            <div class="bg-white rounded-lg shadow-md p-8 mb-12" data-aos="fade-up">
+                <div class="flex items-start">
+                    <div class="mr-6 mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Новий інсталятор</h3>
+                        <p class="text-gray-600 mb-6">
+                            Ubuntu 24.04 представляє повністю оновлений інсталятор, побудований на Flutter з використанням серверного бекенду Subiquity, що забезпечує більшу узгодженість, функціональність та зручність використання.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <img src="https://www.linuxbuzz.com/wp-content/uploads/2024/04/Ubuntu-Desktop-Settings-During-Installation.png" alt="Ubuntu 24.04 Installer" class="rounded-lg shadow-md">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Уніфікований стек</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Інсталятор тепер використовує той самий бекенд Subiquity, що й Ubuntu Server, забезпечуючи функціональний паритет та простоту обслуговування.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Додаткові опції шифрування</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Додано підтримку установки ZFS з шифруванням та експериментальне шифрування диску на основі TPM для підвищеної безпеки.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Інтегрований autoinstall</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Можливість вказати адресу файлу autoinstall.yaml для автоматизованої установки з власними налаштуваннями, створенням користувачів та іншими конфігураціями.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Мінімальна установка</h4>
+                                <p class="text-gray-600 mb-4">
+                                    За замовчуванням тепер використовується мінімальна установка, яка включає лише найнеобхідніші додатки для швидкого старту. Розширену установку можна вибрати під час інсталяції.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security -->
+            <div class="bg-white rounded-lg shadow-md p-8 mb-12" data-aos="fade-up">
+                <div class="flex items-start">
+                    <div class="mr-6 mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Вдосконалена безпека</h3>
+                        <p class="text-gray-600 mb-6">
+                            Ubuntu 24.04 LTS включає численні покращення безпеки, які забезпечують надійний захист системи та даних користувачів.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Обмеження просторів імен</h4>
+                                <p class="text-gray-600 mb-4">
+                                    AppArmor тепер використовується для вибіркового контролю доступу до непривілейованих просторів імен користувачів, зменшуючи можливі вектори атак на ядро Linux.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Зміцнення бінарних файлів</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Увімкнено FORTIFY_SOURCE=3, що додає перевірки для виявлення можливого переповнення буфера в багатьох стандартних функціях керування пам'яттю.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">AppArmor 4</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Нова версія AppArmor з підтримкою більш детального контролю мережевих адрес і портів, а також можливістю делегувати рішення контролю доступу довіреній програмі користувацького простору.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Вимкнення старих версій TLS</h4>
+                                <p class="text-gray-600 mb-4">
+                                    TLS 1.0, 1.1 та DTLS 1.0 примусово вимкнено для програм, що використовують бібліотеки openssl або gnutls, щоб захистити користувачів від атак на пониження рівня TLS.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kernel 6.8 -->
+            <div class="bg-white rounded-lg shadow-md p-8" data-aos="fade-up">
+                <div class="flex items-start">
+                    <div class="mr-6 mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Ядро Linux 6.8</h3>
+                        <p class="text-gray-600 mb-6">
+                            Ubuntu 24.04 включає нове ядро Linux 6.8, що забезпечує підтримку нового апаратного забезпечення, покращену продуктивність та нові функції безпеки.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <img src="https://digilent.com/blog/wp-content/uploads/2015/05/1280px-Kernel_Layout.svg_.png" alt="Linux Kernel Structure" class="rounded-lg shadow-md">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Підтримка Intel shadow stack</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Підтримка апаратної функції shadow stack на процесорах Intel для запобігання атакам типу return-oriented programming (ROP).
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Безпечна віртуалізація</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Підтримка AMD SEV-SNP та Intel TDX для шифрування пам'яті віртуальних машин та захисту їх вмісту від гіпервізора та оператора інфраструктури.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-2 text-orange-500">Перевірка меж під час компіляції</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Покращена перевірка меж функцій керування пам'яттю під час компіляції для виявлення потенційних переповнень буфера ще до виконання програми.
+                                </p>
+                                
+                                <h4 class="font-bold mb-2 text-orange-500">Покращена підтримка пристроїв</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Розширена підтримка нових процесорів, графічних карт, геймпадів і контролерів та мережевих пристроїв.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title mx-auto" style="width: fit-content;" data-aos="fade-up">
+                Інші важливі зміни
+            </h2>
+            
+            <div class="timeline" data-aos="fade-up">
+                <!-- Item 1 -->
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg mb-2 accent-color">PipeWire за замовчуванням</h3>
+                        <p class="text-gray-600">
+                            PipeWire тепер є сервером звуку за замовчуванням. Це забезпечує кращу сумісність з обладнанням, зворотну сумісність з JACK, зменшення використання ЦП та краще управління сучасним Bluetooth аудіо обладнанням.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg mb-2 accent-color">Допоміжні технології</h3>
+                        <p class="text-gray-600">
+                            Численні покращення доступності, включаючи модернізацію програми читання екрану Orca, новий режим сну для екранного читача, покращену навігацію таблицями та більш послідовний режим високої контрастності.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg mb-2 accent-color">Спільний доступ до паролів Wi-Fi</h3>
+                        <p class="text-gray-600">
+                            Тепер можна легко поділитися паролем Wi-Fi з іншими пристроями за допомогою QR-коду, що генерується в налаштуваннях Wi-Fi без необхідності копіювати реальний пароль у потенційно небезпечні програми.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg mb-2 accent-color">Libadwaita всюди</h3>
+                        <p class="text-gray-600">
+                            Багато основних додатків використовують GTK4/libadwaita, що забезпечує кращий вигляд, масштабування та послідовний дизайн. Зокрема, додатки отримали повнорозмірні бічні панелі, що виглядають сучасно та елегантно.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg mb-2 accent-color">Покращені налаштування миші та тачпаду</h3>
+                        <p class="text-gray-600">
+                            Оновлений вигляд, макет та опції в панелі "Миша та тачпад". Додано анімації для демонстрації напрямків прокрутки, можливість налаштувати правий клік на тачпаді та вимкнути автоматичне вимкнення тачпаду під час набору тексту.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg mb-2 accent-color">Підтримка VPN WireGuard</h3>
+                        <p class="text-gray-600">
+                            Тепер можна налаштувати підключення VPN WireGuard безпосередньо з панелі "Мережа", а потім вмикати/вимикати ці підключення через меню швидких налаштувань для більш зручного та безпечного доступу до мережі.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to action -->
+    <section class="py-16 bg-gray-800 bg-gradient-to-r from-orange-500 to-purple-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">Готові спробувати Ubuntu 24.04 LTS?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Завантажте нову версію Ubuntu 24.04 LTS "Noble Numbat" прямо зараз та відкрийте для себе всі переваги сучасного, безпечного та зручного робочого середовища.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://ubuntu.com/download/desktop" class="bg-white accent-color px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-all">
+                    Завантажити Ubuntu 24.04 LTS
+                </a>
+                <a href="https://ubuntu.com/tutorials/install-ubuntu-desktop" class="bg-transparent border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all">
+                    Посібник з встановлення
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Scroll progress bar
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.scrollY;
+            let docHeight = document.body.offsetHeight;
+            let winHeight = window.innerHeight;
+            let scrollPercent = scrollTop / (docHeight - winHeight);
+            let scrollPercentRounded = Math.round(scrollPercent * 100);
+            
+            document.querySelector('.scroll-progress').style.width = scrollPercentRounded + '%';
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
